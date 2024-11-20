@@ -1,0 +1,19 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+import LoginUser from "../components/Login";
+import { prisma } from "./lib/prisma";
+
+if (Astro.cookies.has("sessionId")) {
+  const sessionId = Astro.cookies.get("sessionId")!.value;
+  const user = prisma.user.findUnique({ where: { sessionId: sessionId } });
+  if (!user) {
+    Astro.redirect("/login");
+  }
+  Astro.redirect("/dashboard");
+}
+---
+
+<!-- Evolesson -->
+<RootLayout title="Lessons Login">
+  <LoginUser client:load />
+</RootLayout>

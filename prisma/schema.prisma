@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Lesson {
+  id            String   @id
+  createdAt     DateTime @default(now())
+  summary       String   @db.VarChar(100)
+  project       String   @db.VarChar(100)
+  area          String   @db.VarChar(25)
+  manager       String   @db.VarChar(100)
+  members       String?  @db.VarChar(255)
+  wentWrong     String   @db.VarChar(255)
+  solution      String   @db.VarChar(255)
+  lessonLearned String   @db.VarChar(255)
+  comments      String?  @db.VarChar(255)
+  accessIDtype  String?  @db.VarChar(20)
+  accessID      String?  @db.VarChar(100)
+  authorId      Int
+  locationId    String
+
+  location Location @relation(fields: [locationId], references: [id])
+  author   User     @relation(fields: [authorId], references: [id])
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  name      String  @unique @db.VarChar(40)
+  password  String
+  sessionId String? @unique
+
+  Lesson Lesson[]
+}
+
+model Location {
+  id     String   @id @db.VarChar(3)
+  name   String   @unique @db.VarChar(20)
+  Lesson Lesson[]
+}
+
+// model Kaizen {
+//   id String @id
+//   // TODO: Define columns
+// }
