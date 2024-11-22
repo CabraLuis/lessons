@@ -24,7 +24,7 @@ export const POST: APIRoute = async ({ request }) => {
   });
 
   if (!user) {
-    return new Response(JSON.stringify({ message: "error" }));
+    return new Response(JSON.stringify({ message: "invalidUser" }));
   }
 
   return new Response(JSON.stringify({ message: "createdUser" }));

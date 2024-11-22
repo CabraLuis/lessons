@@ -2,7 +2,6 @@ import { useState } from "preact/hooks";
 
 export default function LoginUser() {
   const [responseMessage, setResponseMessage] = useState("");
-  const [logged, setLogged] = useState(false);
 
   async function submit(e: SubmitEvent) {
     e.preventDefault();
@@ -14,7 +13,6 @@ export default function LoginUser() {
     });
 
     const data = await response.json();
-    setResponseMessage(data.message);
     if (data.message == "logIn") {
       window.location.href = "/dashboard";
     }

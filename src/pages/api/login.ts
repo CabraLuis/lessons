@@ -40,5 +40,5 @@ export const POST: APIRoute = async ({ request, cookies }) => {
 
     return new Response(JSON.stringify({ message: "logIn" }));
   }
-  return new Response(JSON.stringify({ message: "error" }));
+  return new Response(JSON.stringify({ message: "logInError" }));
 };

@@ -11,7 +11,6 @@ export default function AllLesson() {
       setLessons(data);
     }
     fetchLessons();
-    console.log("ok");
   }, []);
 
   return (

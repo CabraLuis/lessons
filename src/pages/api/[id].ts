@@ -57,6 +57,7 @@ export const DELETE: APIRoute = async ({ params, cookies }) => {
       })
     );
   }
+
   if (!cookies.has("sessionId")) {
     return new Response(
       JSON.stringify({
@@ -77,35 +78,3 @@ export const DELETE: APIRoute = async ({ params, cookies }) => {
 
   return new Response(JSON.stringify(lesson));
 };
-
-//? MAYBE REMOVE PATCH
-// export const PATCH: APIRoute = async ({ params, cookies }) => {
-//   const id = params.id;
-
-//   if (!cookies.has("locationId")) {
-//     return new Response(
-//       JSON.stringify({
-//         message: "Location not defined!",
-//       })
-//     );
-//   }
-//   if (!cookies.has("sessionId")) {
-//     return new Response(
-//       JSON.stringify({
-//         message: "Session not defined!",
-//       })
-//     );
-//   }
-//   const locationId = parseInt(cookies.get("locationId")!.value);
-//   const sessionId = cookies.get("sessionId ")!.value;
-
-//   const author = await prisma.user.findUniqueOrThrow({
-//     where: { sessionId: sessionId },
-//   });
-
-//   const lesson = prisma.lesson.update({
-//     where: { id: id, locationId: locationId, authorId: author.id },
-//     data: {},
-//   });
-//   return new Response(JSON.stringify(lesson));
-// };
