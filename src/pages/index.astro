@@ -9,11 +9,11 @@ import logo from "../logo.png";
 
   buttons.forEach((button) => {
     button.addEventListener("click", async () => {
-      const response = await fetch("api/workplaceselection", {
-        method: "POST",
-        body: JSON.stringify({ value: button.value }),
-      });
-      window.location.href = "/login";
+      // await fetch("api/workplaceselection", {
+      //   method: "POST",
+      //   body: JSON.stringify({ value: button.value }),
+      // });
+      // window.location.href = "/login";
     });
   });
 </script>

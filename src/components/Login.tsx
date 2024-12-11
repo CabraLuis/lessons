@@ -1,21 +1,15 @@
-import { useState } from "preact/hooks";
-
 export default function LoginUser() {
-  const [responseMessage, setResponseMessage] = useState("");
-
   async function submit(e: SubmitEvent) {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-
-    const response = await fetch("/api/login", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-    if (data.message == "logIn") {
-      window.location.href = "/dashboard";
-    }
+    // e.preventDefault();
+    // const formData = new FormData(e.target as HTMLFormElement);
+    // const response = await fetch("/api/login", {
+    //   method: "POST",
+    //   body: formData,
+    // });
+    // const data = await response.json();
+    // if (data.message === "logIn") {
+    //   window.location.href = "/dashboard";
+    // }
   }
   return (
     <div class="hero bg-base-200 min-h-screen">

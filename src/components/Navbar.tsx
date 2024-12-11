@@ -1,20 +1,9 @@
-import { useState } from "preact/hooks";
-
 export default function Navbar() {
-  const [responseMessage, setResponseMessage] = useState("");
-
   async function submit(e: SubmitEvent) {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-
-    const response = await fetch("/api/logout", {
-      method: "POST",
-    });
-
-    const data = await response.json();
-    if (data.message == "logOut") {
-      window.location.href = "/login";
-    }
+    // e.preventDefault();
+    // await fetch("/api/logout", {
+    //   method: "POST",
+    // });
   }
   return (
     <div class="navbar bg-base-300">

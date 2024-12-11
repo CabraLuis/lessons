@@ -26,7 +26,7 @@ export default function NewLesson() {
 
   async function submit(e: SubmitEvent) {
     e.preventDefault();
-    const response = await fetch("/api/new", {
+    await fetch("/api/new", {
       method: "POST",
       body: JSON.stringify({
         summary: summary,
@@ -101,7 +101,7 @@ export default function NewLesson() {
                     onChange={(e: any) => setArea(e.target.value)}
                     placeholder={"Select area"}
                   >
-                    <option value={""} disabled selected>
+                    <option value="" disabled selected>
                       Select area
                     </option>
                     <option value="Manufacturing">Manufacturing</option>
